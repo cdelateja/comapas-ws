@@ -1,0 +1,16 @@
+server:
+  port: 8003
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/comapas?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: root
+    password: Admin12287
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
