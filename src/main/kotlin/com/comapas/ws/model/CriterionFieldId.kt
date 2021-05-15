@@ -1,7 +1,6 @@
 package com.comapas.ws.model
 
 import java.io.Serializable
-import java.util.*
 
 class CriterionFieldId : Serializable {
 

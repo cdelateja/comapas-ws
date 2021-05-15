@@ -64,6 +64,11 @@
 			<version>1.5.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.ct</groupId>
+			<artifactId>ct-commons-rest</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

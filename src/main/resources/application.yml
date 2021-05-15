@@ -14,3 +14,5 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
+oauth:
+  url: http://localhost:8002/oauth

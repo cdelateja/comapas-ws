@@ -1,5 +1,7 @@
 package com.comapas.ws.model
 
+import org.apache.commons.lang3.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringStyle
 import javax.persistence.*
 
 @Entity
@@ -12,6 +14,10 @@ class Criterion {
     var name: String? = null
     var code: String? = null
 
-    @OneToMany(mappedBy = "idCriterion", fetch = FetchType.LAZY)
-    val fields: MutableList<CriterionField> = arrayListOf()
+    @OneToMany(mappedBy = "idCriterion", fetch = FetchType.EAGER)
+    var fields: MutableList<CriterionField> = arrayListOf()
+
+    override fun toString(): String {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE)
+    }
 }
