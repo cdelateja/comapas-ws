@@ -6,7 +6,7 @@ import javax.persistence.*
 
 @Entity
 @Table
-class Field {
+class Field: Auditable<String>() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

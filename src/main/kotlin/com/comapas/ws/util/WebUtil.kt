@@ -13,4 +13,13 @@ class WebUtil(
         return request.getHeader("Authorization")
     }
 
+    fun ifOutOfWebRequest(): Boolean {
+        return try {
+            request.getHeader("Authorization")
+            false
+        } catch (e: IllegalStateException) {
+            true
+        }
+    }
+
 }

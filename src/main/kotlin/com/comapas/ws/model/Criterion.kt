@@ -6,7 +6,7 @@ import javax.persistence.*
 
 @Entity
 @Table
-class Criterion {
+class Criterion: Auditable<String>() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -27,5 +27,5 @@ class InstituteField {
             JoinColumn(name = "idField", referencedColumnName = "idField", insertable = false, updatable = false)
         ]
     )
-    private val criterionField: CriterionField? = null
+    val criterionField: CriterionField? = null
 }

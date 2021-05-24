@@ -8,7 +8,7 @@ import javax.persistence.*
 @IdClass(CriterionFieldId::class)
 @Entity
 @Table
-class CriterionField {
+class CriterionField: Auditable<String>() {
 
     @Id
     var idCriterion: Long? = null
