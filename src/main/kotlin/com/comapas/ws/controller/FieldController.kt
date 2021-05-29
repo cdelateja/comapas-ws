@@ -19,18 +19,21 @@ class FieldController(private val fieldService: FieldService) {
 
     @GetMapping(value = ["/findAll"], produces = ["application/json"])
     fun findAll(): ResponseEntity<*> {
-        return ResponseEntity(Response(HttpStatus.OK.value(), fieldService.findAll()), HttpStatus.OK)
+        return Response.ok(fieldService.findAll())
     }
 
     @GetMapping(value = ["/types"], produces = ["application/json"])
     fun getTypes(): ResponseEntity<*> {
-        return ResponseEntity(Response(HttpStatus.OK.value(), fieldService.getTypes()), HttpStatus.OK)
+        return Response.ok(fieldService.getTypes())
     }
 
     @PostMapping(value = ["/save"], consumes = ["application/json"], produces = ["application/json"])
     fun save(@RequestBody request: FieldReq): ResponseEntity<*> {
-        return ResponseEntity(
-            Response(HttpStatus.OK.value(), fieldService.createField(request)), HttpStatus.OK
-        )
+        return Response.ok(fieldService.createField(request))
+    }
+
+    @GetMapping(value = ["/fieldsInfo"], produces = ["application/json"])
+    fun getFieldsInfo(): ResponseEntity<*> {
+        return Response.ok(fieldService.getFieldsInfo())
     }
 }

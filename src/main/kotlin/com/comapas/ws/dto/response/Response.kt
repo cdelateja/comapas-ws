@@ -3,12 +3,20 @@ package com.comapas.ws.dto.response
 import com.comapas.ws.util.exception.ServiceException
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 
 class Response {
 
     var responseStatus: Int? = null
     var responseError: String? = null
     var result: Any? = null
+
+    companion object {
+        fun ok(result: Any?): ResponseEntity<*> {
+            return ResponseEntity(Response(HttpStatus.OK.value(), result), HttpStatus.OK)
+        }
+    }
 
     constructor() {}
 

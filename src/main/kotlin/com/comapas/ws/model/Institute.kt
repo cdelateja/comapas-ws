@@ -5,11 +5,14 @@ import javax.persistence.*
 
 @Entity
 @Table
-class Institute {
+class Institute: Auditable<String>() {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var idInstitute: Long? = null
-    var name: String? = null
+
+    var score: Int = 0
+
+    @OneToMany(mappedBy = "idInstitute", fetch = FetchType.EAGER)
+    var fields: MutableList<InstituteField> = arrayListOf()
 
 }

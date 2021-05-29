@@ -1,7 +1,7 @@
 package com.comapas.ws.service
 
 import com.comapas.ws.dto.request.FieldReq
-import com.comapas.ws.model.Criterion
+import com.comapas.ws.dto.response.FieldsInfoRes
 import com.comapas.ws.model.Field
 import com.comapas.ws.repository.FieldRepository
 import com.comapas.ws.util.exception.ServiceException
@@ -25,6 +25,12 @@ class FieldService(private val fieldRepository: FieldRepository) {
     }
 
     @Transactional
+    fun findByName(name: String): Field {
+        return fieldRepository.findByName(name)
+            .orElseThrow { ServiceException(HttpStatus.NOT_FOUND.value(), "Criterion not found by name: $name") }
+    }
+
+    @Transactional
     fun createField(req: FieldReq): Field {
         val field = FieldUtil.toModel(req)
         return fieldRepository.save(field)
@@ -33,6 +39,14 @@ class FieldService(private val fieldRepository: FieldRepository) {
     @Transactional
     fun getTypes(): List<String> {
         return FieldUtil.getTypes()
+    }
+
+    @Transactional
+    fun getFieldsInfo(): FieldsInfoRes {
+        val fields = findAll()
+        var totalScore = 0
+        fields.forEach { totalScore += it.score }
+        return FieldsInfoRes(totalScore, fields.size)
     }
 
 }

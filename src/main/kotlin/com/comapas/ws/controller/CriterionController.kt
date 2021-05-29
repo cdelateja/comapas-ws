@@ -20,20 +20,16 @@ class CriterionController(private val criterionService: CriterionService) {
 
     @GetMapping(value = ["/findAll"], produces = ["application/json"])
     fun findAll(): ResponseEntity<*> {
-        return ResponseEntity(Response(HttpStatus.OK.value(), criterionService.findAll()), HttpStatus.OK)
+        return Response.ok(criterionService.findAll())
     }
 
     @PostMapping(value = ["/save"], consumes = ["application/json"], produces = ["application/json"])
     fun save(@RequestBody request: CriterionReq): ResponseEntity<*> {
-        return ResponseEntity(
-            Response(HttpStatus.OK.value(), criterionService.createCriterion(request)), HttpStatus.OK
-        )
+        return Response.ok(criterionService.createCriterion(request))
     }
 
     @PostMapping(value = ["/addFields"], consumes = ["application/json"], produces = ["application/json"])
     fun addFields(@RequestBody request: CriterionFieldReq): ResponseEntity<*> {
-        return ResponseEntity(
-            Response(HttpStatus.OK.value(), criterionService.addFields(request)), HttpStatus.OK
-        )
+        return Response.ok(criterionService.addFields(request))
     }
 }

@@ -18,6 +18,7 @@ class Field: Auditable<String>() {
     var required: Boolean = false
     var evidence: Boolean = false
     var score: Int = 0
+    var scoreValue: String? = null
 
     override fun toString(): String {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE)

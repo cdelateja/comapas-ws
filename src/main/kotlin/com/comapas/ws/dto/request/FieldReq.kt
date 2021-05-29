@@ -10,7 +10,8 @@ class FieldReq(
     var catalog: List<CatalogReq> = arrayListOf(),
     var required: Boolean,
     var evidence: Boolean,
-    var score: Int
+    var score: Int,
+    var scoreValue: String?
 ) {
 
     override fun toString(): String {

@@ -1,18 +1,17 @@
 package com.comapas.ws.model
 
 import java.io.Serializable
-import java.util.*
 
-class InstituteFieldId : Serializable {
+class FieldFileId : Serializable {
 
-    private val idInstitute: Long? = null
-    private val idField: Long? = null
+    var idInstitute: Long? = null
+    var idField: Long? = null
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as InstituteFieldId
+        other as FieldFileId
 
         if (idInstitute != other.idInstitute) return false
         if (idField != other.idField) return false

@@ -8,7 +8,7 @@ spring:
     password: Admin12287
   jpa:
     generate-ddl: true
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: update
       naming:
