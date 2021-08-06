@@ -31,8 +31,8 @@ class InstituteFieldService(
                 val instituteField = InstituteField()
                 instituteField.idInstitute = idInstitute
                 instituteField.idField = field.idField
-                instituteField.value = it.value
-                score += if(Objects.nonNull(it.value)) calculateScore(it.value!!, field) else 0
+                instituteField.value = if("" == it.value) null else it.value
+                score += if(Objects.nonNull(instituteField.value)) calculateScore(it.value!!, field) else 0
                 instituteFieldRepository.save(instituteField)
             }
         }

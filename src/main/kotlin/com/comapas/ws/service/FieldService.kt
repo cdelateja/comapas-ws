@@ -1,6 +1,7 @@
 package com.comapas.ws.service
 
 import com.comapas.ws.dto.request.FieldReq
+import com.comapas.ws.dto.request.PositionReq
 import com.comapas.ws.dto.response.FieldsInfoRes
 import com.comapas.ws.model.Field
 import com.comapas.ws.repository.FieldRepository

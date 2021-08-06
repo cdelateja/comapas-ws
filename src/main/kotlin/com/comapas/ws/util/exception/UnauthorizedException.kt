@@ -1,15 +1,11 @@
 package com.comapas.ws.util.exception
 
-open class ServiceException : Exception {
+import org.springframework.http.HttpStatus
 
-    var status: Int? = null
+class UnauthorizedException : ServiceException {
 
-    constructor() {}
-
-    constructor(message: String?): super(message)
-
-    constructor(status: Int?, message: String?): super(message) {
-        this.status = status
+    constructor(message: String?): super(message) {
+        this.status = HttpStatus.UNAUTHORIZED.value()
     }
 
     override fun toString(): String {

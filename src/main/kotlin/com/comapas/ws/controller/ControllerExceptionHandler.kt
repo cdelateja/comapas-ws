@@ -2,6 +2,7 @@ package com.comapas.ws.controller
 
 import com.comapas.ws.dto.response.Response
 import com.comapas.ws.util.exception.ServiceException
+import com.comapas.ws.util.exception.UnauthorizedException
 import org.apache.logging.log4j.LogManager
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,8 +20,14 @@ class ControllerExceptionHandler {
 
     @ExceptionHandler(ServiceException::class)
     fun exceptionHandler(e: ServiceException): ResponseEntity<*> {
-        log.error("Error: $e")
+        log.error("ServiceException handler: $e")
         return ResponseEntity(Response(e), HttpStatus.OK)
+    }
+
+    @ExceptionHandler(UnauthorizedException::class)
+    fun exceptionHandler(e: UnauthorizedException): ResponseEntity<*> {
+        log.error("UnauthorizedException handler: $e")
+        return ResponseEntity(Response(e), HttpStatus.UNAUTHORIZED)
     }
 
 }

@@ -1,6 +1,7 @@
 package com.comapas.ws.config
 
 import com.comapas.ws.service.OauthService
+import com.comapas.ws.util.exception.UnauthorizedException
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -52,7 +53,7 @@ class Interceptor(
     private val oauthService: OauthService,
 ) : HandlerInterceptor {
 
-    @Throws(Exception::class)
+    @Throws(UnauthorizedException::class)
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         if ("OPTIONS" == request.method) {
             return true

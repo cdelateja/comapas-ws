@@ -43,6 +43,11 @@ class InstituteService(
         return info
     }
 
+    @Transactional
+    fun getInstituteInfo(idInstitute: Long): InstituteInfoRes {
+        return getInstituteInfo(findById(idInstitute))
+    }
+
     private fun getInstituteInfo(institute: Institute): InstituteInfoRes {
         var totalFields = 0
         institute.fields.forEach { if (Objects.nonNull(it.value)) totalFields++ }

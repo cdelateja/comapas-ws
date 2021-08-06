@@ -29,7 +29,12 @@ class InstituteController(
     }
 
     @GetMapping(value = ["/institutesInfo"], produces = ["application/json"])
-    fun getFieldsInfo(): ResponseEntity<*> {
+    fun getInstitutesInfo(): ResponseEntity<*> {
         return Response.ok(instituteService.getInstitutesInfo())
+    }
+
+    @GetMapping(value = ["/instituteInfo"], produces = ["application/json"])
+    fun getInstituteInfo(@RequestParam idInstitute: Long): ResponseEntity<*> {
+        return Response.ok(instituteService.getInstituteInfo(idInstitute))
     }
 }

@@ -2,6 +2,7 @@ package com.comapas.ws.controller
 
 import com.comapas.ws.dto.response.Response
 import com.comapas.ws.service.FieldFileService
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
@@ -27,6 +28,8 @@ class FileController(private val fieldFileService: FieldFileService) {
 
     @GetMapping(value = ["/fieldFile"], produces = ["application/json"])
     fun findFieldFile(@RequestParam idInstitute: Long, @RequestParam idField: Long): ResponseEntity<*> {
-        return Response.ok(fieldFileService.getContent(idInstitute, idField))
+        return ResponseEntity(
+            fieldFileService.getContent(idInstitute, idField), HttpStatus.OK
+        )
     }
 }

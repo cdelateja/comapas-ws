@@ -16,6 +16,8 @@ class CriterionField: Auditable<String>() {
     @Id
     var idField: Long? = null
 
+    var position: Int? = null
+
     @MapsId("idField")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idField", referencedColumnName = "idField", insertable = false, updatable = false)

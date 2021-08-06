@@ -1,17 +1,21 @@
 package com.comapas.ws.controller
 
 import com.comapas.ws.dto.request.FieldReq
+import com.comapas.ws.dto.request.PositionReq
 import com.comapas.ws.dto.response.Response
+import com.comapas.ws.service.CriterionFieldService
 import com.comapas.ws.service.FieldService
 import org.apache.logging.log4j.LogManager
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
 @RequestMapping(value = ["/field"])
-class FieldController(private val fieldService: FieldService) {
+class FieldController(
+    private val fieldService: FieldService,
+    private val criterionFieldService: CriterionFieldService
+) {
 
     companion object {
         private val log = LogManager.getLogger(FieldController::class)
@@ -35,5 +39,10 @@ class FieldController(private val fieldService: FieldService) {
     @GetMapping(value = ["/fieldsInfo"], produces = ["application/json"])
     fun getFieldsInfo(): ResponseEntity<*> {
         return Response.ok(fieldService.getFieldsInfo())
+    }
+
+    @PostMapping(value = ["/position"], consumes = ["application/json"], produces = ["application/json"])
+    fun position(@RequestBody request: PositionReq): ResponseEntity<*> {
+        return Response.ok(criterionFieldService.position(request))
     }
 }

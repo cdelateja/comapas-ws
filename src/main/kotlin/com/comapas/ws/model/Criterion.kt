@@ -11,8 +11,14 @@ class Criterion: Auditable<String>() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var idCriterion: Long? = null
+
     var name: String? = null
+
     var code: String? = null
+
+    var idCategory: Long? = null
+
+    var position: Int? = null
 
     @OneToMany(mappedBy = "idCriterion", fetch = FetchType.EAGER)
     var fields: MutableList<CriterionField> = arrayListOf()
